@@ -42,6 +42,7 @@ class Login extends React.Component {
             <input
               data-testid="login-name-input"
               name="nome"
+              value={ nome }
               onChange={ this.onInputChange }
             />
             <button
