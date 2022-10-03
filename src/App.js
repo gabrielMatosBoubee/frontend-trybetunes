@@ -1,8 +1,14 @@
 import React from 'react';
+import Pages from './pages/Pages';
 
 class App extends React.Component {
   render() {
-    return (<p>TrybeTunes</p>);
+    return (
+      <>
+        <Pages />
+        <p>TrybeTunes</p>
+      </>
+    );
   }
 }
 
