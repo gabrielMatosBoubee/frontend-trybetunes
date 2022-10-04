@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Carregando from './Carregando';
-import { Link } from 'react-router-dom';
 
 class Search extends React.Component {
   constructor() {
@@ -79,7 +79,7 @@ class Search extends React.Component {
           : (
             <p>
               Resultado de álbuns de:
-              {nomeDigitado}
+              {` ${nomeDigitado}`}
             </p>
           ))}
         {nomeSalvo && obj.map((ele) => (
