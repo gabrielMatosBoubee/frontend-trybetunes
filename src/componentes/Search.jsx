@@ -90,7 +90,9 @@ class Search extends React.Component {
             <Link
               to={ `/album/${ele.collectionId}` }
               data-testid={ `link-to-album-${ele.collectionId}` }
-            />
+            >
+              Album
+            </Link>
           </div>
         ))}
         ;

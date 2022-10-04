@@ -9,6 +9,8 @@ class MusicCard extends React.Component {
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
           O seu navegador não suporta o elemento
+          {' '}
+          { trackName }
           <code>audio</code>
           .
         </audio>
