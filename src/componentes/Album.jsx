@@ -1,7 +1,9 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
+// import { addSong } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -39,6 +41,8 @@ class Album extends React.Component {
             <MusicCard
               previewUrl={ element.previewUrl }
               trackName={ element.trackName }
+              trackId={ element.trackId }
+              idMusic={ idMusic }
             />
           </div>
         ))}
@@ -46,5 +50,13 @@ class Album extends React.Component {
     );
   }
 }
+
+Album.propTypes = {
+  match: propTypes.shape({
+    params: propTypes.shape({
+      id: propTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default Album;
