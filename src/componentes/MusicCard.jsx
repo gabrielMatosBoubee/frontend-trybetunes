@@ -1,5 +1,6 @@
 import React from 'react';
-import { addSong } from '../services/favoriteSongsAPI';
+import PropTypes from 'prop-types';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -8,6 +9,15 @@ class MusicCard extends React.Component {
       checked: false,
       favSong: true,
     };
+  }
+
+  async componentDidMount() {
+    const { trackId } = this.props;
+    this.setState({ favSong: false });
+    const favoritMusic = await getFavoriteSongs();
+    this.setState({
+      checked: favoritMusic.some((ele) => ele.trackId === trackId),
+      favSong: true });
   }
 
   test = async () => {
@@ -59,5 +69,12 @@ class MusicCard extends React.Component {
     );
   }
 }
+
+MusicCard.propTypes = {
+  previewUrl: PropTypes.string.isRequired,
+  trackName: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
+  idMusic: PropTypes.shape.isRequired,
+};
 
 export default MusicCard;
