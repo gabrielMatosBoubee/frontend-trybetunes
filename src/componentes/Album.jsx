@@ -24,7 +24,6 @@ class Album extends React.Component {
       .filter((element) => element !== idMusic[0]);
     const priemeiroItem = idMusic
       .filter((element) => element === idMusic[0]);
-
     return (
       <div data-testid="page-album">
         <Header />

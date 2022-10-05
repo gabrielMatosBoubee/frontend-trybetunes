@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -11,21 +11,39 @@ class MusicCard extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.test1();
+  }
+
+  test1 = async () => {
     const { trackId } = this.props;
     this.setState({ favSong: false });
     const favoritMusic = await getFavoriteSongs();
     this.setState({
       checked: favoritMusic.some((ele) => ele.trackId === trackId),
       favSong: true });
-  }
+  };
 
-  test = async () => {
+  salvaMusicFav = async () => {
     const { checked } = this.state;
     const { idMusic, trackName } = this.props;
     if (checked) {
       this.setState({ favSong: false });
-      await addSong(idMusic.filter((element) => element === trackName));
+      const musicaFav = idMusic.filter((element) => element.trackName === trackName);
+      const [musicFavInObj] = musicaFav;
+      await addSong(musicFavInObj);
+      this.setState({ favSong: true });
+    }
+  };
+
+  removeMusicFav = async () => {
+    const { checked } = this.state;
+    const { idMusic, trackName } = this.props;
+    if (!checked) {
+      this.setState({ favSong: false });
+      const musicaUnFav = idMusic.filter((element) => element.trackName === trackName);
+      const [musicaUnFavInObj] = musicaUnFav;
+      await removeSong(musicaUnFavInObj);
       this.setState({ favSong: true });
     }
   };
@@ -33,7 +51,10 @@ class MusicCard extends React.Component {
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value }, () => this.test());
+    this.setState({ [name]: value }, () => {
+      this.salvaMusicFav();
+      this.removeMusicFav();
+    });
   };
 
   render() {
