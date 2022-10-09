@@ -19,26 +19,6 @@ class Favorites extends React.Component {
     this.setState({ favoriteMusic: favSong, loading: false, checked: true });
   }
 
-  // removeMusicFav = async () => {
-  //   const { checked, favoriteMusic, name } = this.state;
-  //   if (!checked) {
-  //     console.log(name);
-  //     const musicaUnFav = favoriteMusic
-  //       .filter((element) => element.trackName === name);
-  //     const musicaFav = favoriteMusic
-  //       .filter((element) => element.trackName !== name);
-  //     const [musicaUnFavInObj] = musicaUnFav;
-  //     console.log(musicaUnFavInObj);
-  //     await removeSong(musicaUnFavInObj);
-  //     this.setState({ checked: true, favoriteMusic: musicaFav });
-  //   }
-  // };
-
-  // shouldComponentUpdate() {
-  //   const { mudança } = this.state;
-  //   return !mudança;
-  // }
-
   async componentDidUpdate() {
     const { checked } = this.state;
     if (!checked) {
@@ -47,12 +27,6 @@ class Favorites extends React.Component {
       this.setState({ favoriteMusic: favSong, loading: false, checked: true });
     }
   }
-
-  // async componentWillUnmount() {
-  //   this.setState({ loading: true });
-  //   const favSong = await getFavoriteSongs();
-  //   this.setState({ favoriteMusic: favSong, loading: false, checked: true });
-  // }
 
   childToParent = (event) => {
     const { target } = event;
