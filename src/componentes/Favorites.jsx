@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import MusicCard from './MusicCard';
 
 class Favorites extends React.Component {
@@ -10,7 +10,6 @@ class Favorites extends React.Component {
       favoriteMusic: [],
       loading: false,
       checked: true,
-      name: '',
     };
   }
 

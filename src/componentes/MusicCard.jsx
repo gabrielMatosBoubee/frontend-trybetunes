@@ -15,10 +15,6 @@ class MusicCard extends React.Component {
     this.localStorageFavs();
   }
 
-  // componentDidUpdate() {
-  //   this.test1();
-  // }
-
   localStorageFavs = async () => {
     const { trackId } = this.props;
     this.setState({ favSong: false });
@@ -42,7 +38,7 @@ class MusicCard extends React.Component {
 
   removeMusicFav = async () => {
     const { checked } = this.state;
-    const { idMusic, ok } = this.props;
+    const { idMusic } = this.props;
     if (!checked) {
       this.setState({ favSong: false });
       await removeSong(idMusic);
@@ -102,6 +98,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   idMusic: PropTypes.shape.isRequired,
+  ok: PropTypes.func.isRequired,
 };
 
 export default MusicCard;
