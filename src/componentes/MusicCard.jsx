@@ -12,38 +12,40 @@ class MusicCard extends React.Component {
   }
 
   componentDidMount() {
-    this.test1();
+    this.localStorageFavs();
   }
 
-  test1 = async () => {
+  // componentDidUpdate() {
+  //   this.test1();
+  // }
+
+  localStorageFavs = async () => {
     const { trackId } = this.props;
     this.setState({ favSong: false });
     const favoritMusic = await getFavoriteSongs();
-    this.setState({
-      checked: favoritMusic.some((ele) => ele.trackId === trackId),
-      favSong: true });
+    const fav = favoritMusic.some((ele) => ele.trackId === trackId);
+    this.setState({ favSong: true });
+    if (fav) {
+      this.setState({ checked: fav });
+    }
   };
 
   salvaMusicFav = async () => {
     const { checked } = this.state;
-    const { idMusic, trackName } = this.props;
+    const { idMusic } = this.props;
     if (checked) {
       this.setState({ favSong: false });
-      const musicaFav = idMusic.filter((element) => element.trackName === trackName);
-      const [musicFavInObj] = musicaFav;
-      await addSong(musicFavInObj);
+      await addSong(idMusic);
       this.setState({ favSong: true });
     }
   };
 
   removeMusicFav = async () => {
     const { checked } = this.state;
-    const { idMusic, trackName } = this.props;
+    const { idMusic, ok } = this.props;
     if (!checked) {
       this.setState({ favSong: false });
-      const musicaUnFav = idMusic.filter((element) => element.trackName === trackName);
-      const [musicaUnFavInObj] = musicaUnFav;
-      await removeSong(musicaUnFavInObj);
+      await removeSong(idMusic);
       this.setState({ favSong: true });
     }
   };
@@ -58,7 +60,7 @@ class MusicCard extends React.Component {
   };
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId, ok } = this.props;
     const { checked, favSong } = this.state;
     return (
       <div>
@@ -79,8 +81,12 @@ class MusicCard extends React.Component {
                 type="checkbox"
                 name="checked"
                 checked={ checked }
-                onChange={ this.onInputChange }
-                id="id"
+                onChange={ async (event) => {
+                  await this.onInputChange(event);
+                  ok(event);
+                } }
+                // onClick={ ok }
+                id="fav"
                 data-testid={ `checkbox-music-${trackId}` }
               />
             </label>
