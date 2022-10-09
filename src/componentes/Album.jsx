@@ -34,8 +34,8 @@ class Album extends React.Component {
             <img src={ element.artworkUrl100 } alt="img" />
           </div>
         ))}
-        {tudoMenosOPrimeiro.map((element) => (
-          <div key={ (element.trackId) }>
+        {tudoMenosOPrimeiro.map((element, index) => (
+          <div key={ (index + 1) }>
             <MusicCard
               previewUrl={ element.previewUrl }
               trackName={ element.trackName }

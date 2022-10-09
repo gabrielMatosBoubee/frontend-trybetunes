@@ -79,7 +79,9 @@ class MusicCard extends React.Component {
                 checked={ checked }
                 onChange={ async (event) => {
                   await this.onInputChange(event);
-                  ok(event);
+                  if (ok) {
+                    ok(event);
+                  }
                 } }
                 // onClick={ ok }
                 id="fav"
