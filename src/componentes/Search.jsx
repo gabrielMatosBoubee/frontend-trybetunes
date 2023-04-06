@@ -54,48 +54,58 @@ class Search extends React.Component {
       nomeSalvo,
       primeiroButton, nomeDigitado } = this.state;
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="search">
         <Header />
-        <input
-          id="id"
-          type="text"
-          data-testid="search-artist-input"
-          name="nome"
-          value={ nome }
-          onChange={ this.onInputChange }
-        />
-        {Button ? (
-          <button
-            type="button"
-            disabled={ disabled }
-            data-testid="search-artist-button"
-            onClick={ () => this.onClickButton() }
-          >
-            Pesquisar
-          </button>
-        ) : <Carregando />}
-        {primeiroButton && (obj.length === 0
-          ? <p>Nenhum álbum foi encontrado</p>
-          : (
-            <p>
-              Resultado de álbuns de:
-              {` ${nomeDigitado}`}
-            </p>
-          ))}
-        {nomeSalvo && obj.map((ele) => (
-          <div key={ `div ${ele.collectionName}` }>
-            <p>{ele.artistName}</p>
-            <p>{ele.collectionName}</p>
-            <img src={ ele.artworkUrl100 } alt="img" />
-            <Link
-              to={ `/album/${ele.collectionId}` }
-              data-testid={ `link-to-album-${ele.collectionId}` }
-            >
-              Album
-            </Link>
+        <div className="searchAll">
+
+          <div className="searchInput">
+
+            <input
+              id="id"
+              type="text"
+              data-testid="search-artist-input"
+              name="nome"
+              value={ nome }
+              onChange={ this.onInputChange }
+            />
+            {Button ? (
+              <button
+                type="button"
+                disabled={ disabled }
+                data-testid="search-artist-button"
+                onClick={ () => this.onClickButton() }
+              >
+                Pesquisar
+              </button>
+            ) : <Carregando />}
           </div>
-        ))}
-        ;
+          <div className="searchAlbum">
+            {primeiroButton && (obj.length === 0
+              ? <p>Nenhum álbum foi encontrado</p>
+              : (
+                <p>
+                  Resultado de álbuns de:
+                  {` ${nomeDigitado}`}
+                </p>
+              ))}
+            <div className="searchResults">
+
+              {nomeSalvo && obj.map((ele) => (
+                <div key={ `div ${ele.collectionName}` }>
+                  <Link
+                    to={ `/album/${ele.collectionId}` }
+                    data-testid={ `link-to-album-${ele.collectionId}` }
+                    className="searchResult"
+                  >
+                    <p>{ele.artistName}</p>
+                    <p>{ele.collectionName}</p>
+                    <img src={ ele.artworkUrl100 } alt="img" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { BsSearch, BsFillStarFill, BsPersonCircle, BsPersonFill } from 'react-icons/bs';
 import { getUser } from '../services/userAPI';
 import Carregando from './Carregando';
 
@@ -25,19 +26,44 @@ class Header extends React.Component {
   render() {
     const { loading, obj } = this.state;
     return (
-      <div data-testid="header-component">
+      <div data-testid="header-component" className="header">
         {loading
           ? (
             <>
-              <p data-testid="header-user-name">
+              <p data-testid="header-user-name" id="usuario">
+                <BsPersonFill />
                 {obj.name}
               </p>
-              <Link to="/search" data-testid="link-to-search">Search</Link>
-              <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-              <Link to="/profile" data-testid="link-to-profile">Profile</Link>
+              <NavLink
+                to="/search"
+                className="searchLink"
+                data-testid="link-to-search"
+                activeClassName="linkAtivo"
+              >
+                <BsSearch />
+                Search
+              </NavLink>
+              <NavLink
+                to="/favorites"
+                data-testid="link-to-favorites"
+                activeClassName="linkAtivo"
+                className="searchLink"
+              >
+                <BsFillStarFill />
+                Favorites
+              </NavLink>
+              <NavLink
+                to="/profile"
+                data-testid="link-to-profile"
+                activeClassName="linkAtivo"
+                className="searchLink"
+              >
+                <BsPersonCircle />
+                Profile
+              </NavLink>
             </>
           )
-          : <Carregando />}
+          : <Carregando className="headerLoading" />}
 
       </div>
     );

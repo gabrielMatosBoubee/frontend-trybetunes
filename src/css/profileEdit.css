@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@1,600&display=swap') ;
+
+.profileEdit {
+  align-items: center;
+  background-color: rgb(115, 115, 115);
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-around;
+  left: 475px;
+  position: relative;
+  top: -40px;
+  width: 700px;
+}
+
+.profileEditImg {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.profileEditDescription {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 300px;
+}
+
+.profileEditEmail {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.profileEditName {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  outline: 0;
+  resize: none;
+  width: 300px;
+}
+
+.profileEditInput {
+  background-color: rgb(115, 115, 115);
+  border: 0;
+  border-bottom: 1px solid white;
+  color: black;
+  font-family: Open Sans;
+  outline: 0;
+}
+
+.profileEditInputDescription {
+  background-color: rgb(115, 115, 115);
+  border: 0;
+  border-bottom: 1px solid white;
+  color: black;
+  height: 300px;
+  outline: 0;
+  resize: none;
+}
+
+.profileEditButton {
+  border-radius: 9px;
+  width: 150px;
+}

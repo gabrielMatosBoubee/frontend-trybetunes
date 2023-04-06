@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import ReactLoading from 'react-loading';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
@@ -59,11 +61,16 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, trackId, ok } = this.props;
     const { checked, favSong } = this.state;
     return (
-      <div>
+      <div className="albumMusic">
         {favSong ? (
           <>
             <p>{trackName}</p>
-            <audio data-testid="audio-component" src={ previewUrl } controls>
+            <audio
+              data-testid="audio-component"
+              src={ previewUrl }
+              className="audio"
+              controls
+            >
               <track kind="captions" />
               O seu navegador não suporta o elemento
               {' '}
@@ -71,11 +78,15 @@ class MusicCard extends React.Component {
               <code>audio</code>
               .
             </audio>
-            <label htmlFor="fav">
-              Favorita
+            <label htmlFor={ trackId } className="checkedLabel">
+              {/* Favorita */}
+              { checked ? <AiFillHeart className="heartCheked" /> : (
+                <AiOutlineHeart className="heart" />
+              )}
               <input
                 type="checkbox"
                 name="checked"
+                className="checked"
                 checked={ checked }
                 onChange={ async (event) => {
                   await this.onInputChange(event);
@@ -84,12 +95,12 @@ class MusicCard extends React.Component {
                   }
                 } }
                 // onClick={ ok }
-                id="fav"
+                id={ trackId }
                 data-testid={ `checkbox-music-${trackId}` }
               />
             </label>
           </>
-        ) : <p>Carregando...</p>}
+        ) : <ReactLoading type="cylon" color="white" height="67px" width="50px" /> }
       </div>
     );
   }

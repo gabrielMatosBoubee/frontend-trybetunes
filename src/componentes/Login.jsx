@@ -36,29 +36,37 @@ class Login extends React.Component {
     const { nome, disabled, button } = this.state;
     const { history } = this.props;
     return (
-      <div data-testid="page-login">
-        {!button ? (
-          <>
-            <input
-              data-testid="login-name-input"
-              name="nome"
-              value={ nome }
-              onChange={ this.onInputChange }
-            />
-            <button
-              type="submit"
-              disabled={ disabled }
-              data-testid="login-submit-button"
-              onClick={ async () => {
-                this.setButton();
-                await createUser({ name: nome });
-                history.push('/search');
-              } }
-            >
-              Entrar
-            </button>
-          </>
-        ) : <Carregando />}
+      <div data-testid="page-login" className="login">
+        <p>Entrar No BoubeeTunes</p>
+        <div className="loginInput">
+          {!button ? (
+            <>
+              <label htmlFor="loginInput" className="loginInputLabel">
+                Nome de usuario:
+                <input
+                  data-testid="login-name-input"
+                  name="nome"
+                  value={ nome }
+                  onChange={ this.onInputChange }
+                  id="loginInput"
+                />
+              </label>
+              <button
+                type="submit"
+                disabled={ disabled }
+                data-testid="login-submit-button"
+                onClick={ async () => {
+                  this.setButton();
+                  await createUser({ name: nome });
+                  history.push('/search');
+                } }
+                id="loginButton"
+              >
+                Entrar
+              </button>
+            </>
+          ) : <div className="loginInputLabels"><Carregando /></div>}
+        </div>
       </div>
     );
   }

@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactLoading from 'react-loading';
 
 class Carregando extends React.Component {
   render() {
     return (
-      <div>
-        <p>Carregando...</p>
+      <div className="loading">
+        <ReactLoading type="bars" color="white" height="667px" width="250px" />
       </div>
     );
   }

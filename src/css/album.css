@@ -1,0 +1,112 @@
+.logo {
+  align-content: center;
+  align-items: center;
+  background-color: burlywood;
+  color: aliceblue;
+  display: flex;
+  height: 400px;
+  justify-content: center;
+  left: 300px;
+  position: relative;
+  top: -68px;
+  width: 166.3vh;
+}
+
+.albumMusics {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  left: 200px;
+  position: relative;
+  top: 50px;
+  width: 500px;
+}
+
+.albumSong {
+  left: 290px;
+  position: relative;
+  top: -200px;
+}
+
+.albumImg {
+  height: 200px;
+  position: relative;
+}
+
+.albumCapa {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  left: 150px;
+  position: relative;
+  top: -200px;
+  width: 550px;
+}
+
+.albumName {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30px;
+}
+
+.albumMusic {
+  display: flex;
+  left: 50px;
+  padding: 10px;
+  position: relative;
+  width: 550px;
+}
+
+.audio {
+  width: 300px;
+}
+
+.albumMusic p {
+  height: 50px;
+  width: 150px;
+}
+
+.checked {
+  display: none;
+}
+
+/* input[ name = 'checked' ]:before {
+    position: absolute;
+    content: '';
+    background-color: white;
+    height: 60%;
+    width: 100%;
+    top: -57%;
+    border-radius: 75px 75px 0 0;
+}
+
+input[ name = 'checked' ]::after {
+  position: absolute;
+  content: '';
+  background-color: white;
+  height: 60%;
+  width: 100%;
+  transform: rotate(-90deg);
+  border-radius: 75px 75px 0 0;
+  top: 20%;
+  right: 76%;
+} */
+
+.heartCheked {
+  color: red;
+  height: 45px;
+  width: 45px;
+}
+
+.heart {
+  height: 45px;
+  width: 45px;
+}
+
+.checkedLabel {
+  left: 15px;
+  position: relative;
+  top: 5px;
+}

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@1,600&display=swap') ;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+}
+
+.login {
+  background-color: rgb(115, 115, 115);
+  border-radius: 30px;
+  width: 500px;
+  margin: auto;
+  margin-top: 15%;
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  position: relative;
+}
+
+.loginInput {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: auto;
+}
+
+.login p {
+  color: rgb(18, 18, 18);
+}
+
+.loginInputLabels {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 200px;
+}
+
+#loginInput {
+  background-color: rgb(115, 115, 115);
+  border: 0 none;
+  box-shadow: 0 0 0;
+  border-bottom: 1px solid white;
+  /* border-radius: 10px; */
+  height: 30px;
+  margin: 20px;
+  outline: 0;
+  font-family: open sans;
+}
+
+#loginButton {
+  height: 32px;
+  border-radius: 10px;
+}

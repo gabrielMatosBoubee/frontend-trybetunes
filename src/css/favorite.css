@@ -1,0 +1,17 @@
+.favoritesMusic {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  left: 400px;
+  position: relative;
+  top: 50px;
+  width: 500px;
+}
+
+.favoritesTitle {
+  color: rgb(250, 232, 161);
+}
+
+#usuario {
+  color: white;
+}

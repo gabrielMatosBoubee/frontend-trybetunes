@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
+import logo from './logoBoubeeTunes.png';
 
 class Album extends React.Component {
   constructor() {
@@ -25,25 +26,38 @@ class Album extends React.Component {
     const priemeiroItem = idMusic
       .filter((element) => element === idMusic[0]);
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="album">
         <Header />
-        {priemeiroItem.map((element) => (
-          <div key={ 0 }>
-            <p data-testid="album-name">{element.collectionName}</p>
-            <p data-testid="artist-name">{element.artistName}</p>
-            <img src={ element.artworkUrl100 } alt="img" />
+        <img src={ logo } alt="logo" className="logo" />
+        <div className="albumMusics">
+          {/* <div className='image'><p className="logo">BOUBEETUNES</p></div> */}
+          {priemeiroItem.map((element) => (
+            <div key={ 0 } className="albumCapa">
+              <div className="albumName">
+                <p
+                  data-testid="album-name"
+                  style={ { color: 'black' } }
+                >
+                  {element.collectionName}
+                </p>
+                <p data-testid="artist-name">{element.artistName}</p>
+              </div>
+              <img src={ element.artworkUrl100 } alt="img" className="albumImg" />
+            </div>
+          ))}
+          <div className="albumSong">
+            {tudoMenosOPrimeiro.map((element, index) => (
+              <div key={ (index + 1) }>
+                <MusicCard
+                  previewUrl={ element.previewUrl }
+                  trackName={ element.trackName }
+                  trackId={ element.trackId }
+                  idMusic={ element }
+                />
+              </div>
+            ))}
           </div>
-        ))}
-        {tudoMenosOPrimeiro.map((element, index) => (
-          <div key={ (index + 1) }>
-            <MusicCard
-              previewUrl={ element.previewUrl }
-              trackName={ element.trackName }
-              trackId={ element.trackId }
-              idMusic={ element }
-            />
-          </div>
-        ))}
+        </div>
       </div>
     );
   }

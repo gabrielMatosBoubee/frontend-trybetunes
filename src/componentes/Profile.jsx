@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import Header from './Header';
 import { getUser } from '../services/userAPI';
+import logo from './logoBoubeeTunes.png';
+import Carregando from './Carregando';
 
 class Profile extends React.Component {
   constructor() {
@@ -22,20 +25,36 @@ class Profile extends React.Component {
     return (
       <div data-testid="page-profile">
         <Header />
-        {loading ? <p>Carregando...</p> : (
+        <img src={ logo } alt="foto" className="logo" />
+        {loading ? <Carregando /> : (
           <div>
-            { dateOfUser.map((element) => (
-              <>
-                <Link to="/profile/edit">Editar perfil</Link>
-                <p>{element.name}</p>
-                <p>{element.email}</p>
-                <p>{element.description}</p>
-                <img
-                  data-testid="profile-image"
-                  src={ element.image }
-                  alt={ `Imagem do ${element.name}` }
-                />
-              </>
+            { dateOfUser.map((element, index) => (
+              <div key={ index } className="profileAll">
+                <div className="profileImg">
+                  <img
+                    data-testid="profile-image"
+                    src={ element.image }
+                    alt=" "
+                    className="profileImgLink"
+                  />
+                  <FaUserCircle className="profileIcon" />
+                </div>
+                <div className="profile">
+                  <Link to="/profile/edit">Editar perfil</Link>
+                  <div>
+                    <p className="profileTitulo"><strong>NOME</strong></p>
+                    <p className="userName">{element.name}</p>
+                  </div>
+                  <div>
+                    <p className="profileTitulo"><strong>EMAIL</strong></p>
+                    <p>{element.email}</p>
+                  </div>
+                  <div className="profileDescribe">
+                    <p className="profileTitulo"><strong>DESCRIÇÃO</strong></p>
+                    <p className="describe1">{element.description}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         ) }

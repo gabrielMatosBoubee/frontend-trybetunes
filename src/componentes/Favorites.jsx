@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import MusicCard from './MusicCard';
+import Carregando from './Carregando';
+import logo from './logoBoubeeTunes.png';
 
 class Favorites extends React.Component {
   constructor() {
@@ -42,8 +44,10 @@ class Favorites extends React.Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        {loading ? <p>Carregando...</p>
-          : favoriteMusic.map((element) => (
+        <img src={ logo } alt="logo" className="logo" />
+        <div className="favoritesMusic">
+          <h2 className="favoritesTitle">Musicas favoritas</h2>
+          {!loading ? favoriteMusic.map((element) => (
             <div key={ element.trackId }>
               <MusicCard
                 previewUrl={ element.previewUrl }
@@ -53,7 +57,9 @@ class Favorites extends React.Component {
                 ok={ this.childToParent }
               />
             </div>
-          ))}
+          ))
+            : <Carregando />}
+        </div>
       </div>
     );
   }
